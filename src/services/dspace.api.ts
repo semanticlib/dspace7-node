@@ -77,8 +77,10 @@ const auth = {
       axios.defaults.headers.Cookie = `DSPACE-XSRF-COOKIE=${csrf}`
       axios.defaults.headers['x-xsrf-token'] = csrf
       console.log(`Log-in success with user: ${user}`)
+      return 'login success'
     } catch (e: any) {
       console.log(`Login failed: ${e.errorCode}`)
+      return 'login failure'
     }
   }
 }
