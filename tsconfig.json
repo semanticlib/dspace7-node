@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
-    "outDir": "dist",
+    "module": "es2015",
+    "outDir": "dist/esm",
     "rootDir": "src",
     "strict": true,
     "sourceMap": true,
+    "declaration": true,
     "moduleResolution": "node",
     "esModuleInterop": true
   },

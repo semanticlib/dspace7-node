@@ -124,10 +124,11 @@ const bitstreams = {
 }
 
 const dspaceApi = {
-  init: (url: string, agent: string) => {
+  init: (url: string, agent: string = 'DSpace NodeJs Client') => {
     axios.defaults.headers['User-Agent'] = agent
     baseUrl = axios.defaults.baseURL = url
   },
+  login: auth.login,
   auth,
   communities,
   collections,

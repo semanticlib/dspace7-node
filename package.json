@@ -2,14 +2,15 @@
   "name": "dspace7-node",
   "version": "1.0.1",
   "description": "DSpace 7 Node Client",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.mjs",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
     "test": "mocha --recursive"
   },
   "dependencies": {
@@ -21,7 +22,6 @@
     "mocha": "^10.4.0",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "tsup": "^8.1.0",
     "typescript": "^5.4.5"
   },
   "repository": "https://github.com/semanticlib/dspace7-node",
