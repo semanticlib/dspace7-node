@@ -1,9 +1,9 @@
 {
   "name": "dspace7-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "DSpace 7 Node Client",
   "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.mjs",
+  "module": "./dist/esm/index.js",
   "files": [
     "dist"
   ],
