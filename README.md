@@ -1,4 +1,7 @@
 # DSpace Node
+![main](https://github.com/semanticlib/dspace7-node/actions/workflows/node.js.yml/badge.svg)
+[![NPM version](https://img.shields.io/npm/v/dspace7-node.svg)](https://npmjs.org/package/dspace7-node)
+[![NPM downloads](https://img.shields.io/npm/dm/dspace7-node.svg)](https://npmjs.org/package/dspace7-node)
 
 NodeJs client for DSpace 7 [REST API](https://github.com/DSpace/RestContract)
 
@@ -50,38 +53,8 @@ import * as DSpace from 'dspace7-node'
   // Add/delete bitstreams
   const bitstreamId = '4478411f-b01f-490c-a16a-59e9c9c558d9'
   await DSpace.newBitstream(itemId, 'Test Item 1.pdf', 'C:/temp/files')
-  await DSpace.Operation.deleteBitstreams(bitstreamId)
-  await DSpace.Operation.deleteBitstreamsByItemId(itemId)  // in all bundles, except 'LICENSE'
-})()
-
-
-```
-
-## Call the API methods
-
-Example of calling the main API methods directly:
-
-```js
-import DSpace from 'dspace7-node'
-
-(async () => {
-  const baseUrl = '' // e.g., https://demo.dspace.org/server
-  const user = ''
-  const password = ''
-
-  // Init and login
-  DSpace.init(baseUrl)
-  await DSpace.login(user, password)
-
-  // All communities
-  const res = await DSpace.Api.communities.all(30) // limit to size 30
-  console.log(res._embedded.communities)
-
-  // Show sub-communities
-  const parentCommunityId = '1f357420-6d26-4079-b581-7eee816322f0'
-  const data = await DSpace.Api.communities.subById(parentCommunityId)
-  console.log(data._embedded.subcommunities)
-
+  await DSpace.deleteBitstreams(bitstreamId)
+  await DSpace.deleteBitstreamsByItemId(itemId)  // in all bundles, except 'LICENSE'
 })()
 
 
