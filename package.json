@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "build:esm": "tsc --module es2015 --outDir dist/esm",
+    "build:cjs": "tsc",
     "test": "mocha --recursive"
   },
   "dependencies": {
