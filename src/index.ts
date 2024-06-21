@@ -21,7 +21,7 @@ export async function showAllItems() {
       // console.log(item.lastModified)
     }
   } catch (e: any) {
-    console.log(`Error getting item: ${e.errorCode}`)
+    console.error(`Error getting item: ${e.errorCode}`)
     process.env.DEBUG && console.dir(e)
   }
 }
@@ -32,7 +32,7 @@ export async function showItem(itemId: string) {
     console.log(`${item.name} (handle: ${item.handle}, id: ${item.uuid})`)
     console.log(`URL: ${item._links.self.href}`)
   } catch (e: any) {
-    console.log(`Error getting item with id: ${itemId}`)
+    console.error(`Error getting item with id: ${itemId}`)
     process.env.DEBUG && console.dir(e)
   }
 }
@@ -49,7 +49,7 @@ export async function showItemBundles(itemId: string, type?: string) {
       await showBitstreams(bundle.uuid)
     }
   } catch (e: any) {
-    console.log(`Error getting bundles with item id: ${itemId}`)
+    console.error(`Error getting bundles with item id: ${itemId}`)
     process.env.DEBUG && console.dir(e)
   }
 }
@@ -64,7 +64,7 @@ export async function showBitstreams(bundleId: string) {
       console.log(`\tThumbnail: ${bitstream._links.thumbnail.href}\n`)
     })
   } catch (e: any) {
-    console.log(`\tError getting bitstreams with bundle id: ${bundleId}`)
+    console.error(`\tError getting bitstreams with bundle id: ${bundleId}`)
     process.env.DEBUG && console.dir(e)
   }
 }
@@ -82,10 +82,10 @@ export async function newBitstream(itemId: string, name: string, filePath: strin
       await dspaceApi.bitstreams.create(bundleId, formData)
       console.log(`Bitstream created in item: ${itemId}`)
     } else {
-      console.log(`Error in getting bundleId: ${itemId}`)
+      console.error(`Error in getting bundleId: ${itemId}`)
     }
   } catch (e: any) {
-    console.log(`Create bitstream failed: ${e.errorCode}`)
+    console.error(`Create bitstream failed: ${e.errorCode}`)
     process.env.DEBUG && console.dir(e)
   }
 
@@ -97,20 +97,19 @@ export async function newBitstream(itemId: string, name: string, filePath: strin
       const bundle = res._embedded.bundles.find(bundle => bundle.name === 'ORIGINAL')
       bundleId = bundle ? bundle.uuid : ''
     } catch (e: any) {
-      console.log(`Error getting bundle ID: ${e.errorCode}`)
+      console.error(`Error getting bundle ID: ${e.errorCode}`)
       process.env.DEBUG && console.dir(e)
     }
     return bundleId
   }
 }
 
-
 export async function deleteBitstreams(bitstreamId: string) {
   try {
     await dspaceApi.bitstreams.delete(bitstreamId)
     console.log(`Bitstream deleted: ${bitstreamId}`)
   } catch (e: any) {
-    console.log(`Delete bitstream (id: ${bitstreamId} failed: ${e.errorCode}`)
+    console.error(`Delete bitstream (id: ${bitstreamId} failed: ${e.errorCode}`)
     process.env.DEBUG && console.dir(e)
   }
 }
@@ -133,12 +132,12 @@ export async function deleteBitstreamsByItemId(itemId: string) {
           }
         }
       } else {
-        console.log(`Error in getting bundleId: ${itemId}`)
+        console.error(`Error in getting bundleId: ${itemId}`)
       }
     }
     console.log(`Deleted bitstreams for itemId: ${itemId}`)
   } catch (e: any) {
-    console.log(`Exception in deleting bitstreams for item: ${itemId}`)
+    console.error(`Exception in deleting bitstreams for item: ${itemId}`)
     process.env.DEBUG && console.dir(e)
   }
 }
@@ -148,7 +147,7 @@ export async function moveItem(itemId: string, colId: string) {
     await dspaceApi.items.move(itemId, colId)
     console.log(`Item moved to collection: ${colId}`)
   } catch (e: any) {
-    console.log(`Item move failed for itemId: ${itemId}`)
+    console.error(`Item move failed for itemId: ${itemId}`)
     process.env.DEBUG && console.dir(e)
   }
 }
@@ -158,7 +157,7 @@ export async function deleteCollection(colId: string) {
     await dspaceApi.collections.deleteById(colId)
     console.log(`Collection deleted: ${colId}`)
   } catch (e: any) {
-    console.log(`Delete collection failed: ${e.errorCode}`)
+    console.error(`Delete collection failed: ${e.errorCode}`)
     process.env.DEBUG && console.dir(e)
   }
 }
@@ -168,7 +167,7 @@ export async function createCollection(comId: string, name: string) {
     await dspaceApi.collections.create(comId, Metadata.newCollection(name))
     console.log(`Collection created: ${name}`)
   } catch (e: any) {
-    console.log(`Create collection failed: ${e.errorCode}`)
+    console.error(`Create collection failed: ${e.errorCode}`)
     process.env.DEBUG && console.dir(e)
   }
 }
@@ -193,7 +192,7 @@ export async function showCollections() {
       }
     }
   } catch (e) {
-    console.log('Error in getting collections')
+    console.error('Error in getting collections')
     process.env.DEBUG && console.dir(e)
   }
 }
