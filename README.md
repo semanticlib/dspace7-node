@@ -33,7 +33,6 @@ import * as DSpace from 'dspace7-node'
 
   // Show list of top communities and its collections
   await DSpace.showCollections()
-  await DSpace.showAllItems()
 
   // Add/delete collections
   const parentCommunityId = '5c1d0962-2a01-4563-9626-d14c964ca3ad'
@@ -59,6 +58,12 @@ import * as DSpace from 'dspace7-node'
 
 
 ```
+
+## Motivation and Use Cases
+
+The motivation to write with example use cases are described here:
+[Batch operations using DSpace 7 REST API](https://www.semanticconsulting.com/blog/batch-operations-using-dspace-7-rest-api)
+
 
 ## Features
 
