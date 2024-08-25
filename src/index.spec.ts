@@ -1,5 +1,5 @@
 import {equal} from 'assert'
-import * as DSpace from 'dspace7-node'
+import * as DSpace from '../src'
 
 describe('Basic tests', () => {
   it('Empty login failure', async () => {
