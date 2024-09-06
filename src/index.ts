@@ -37,6 +37,16 @@ export async function showItem(itemId: string) {
   }
 }
 
+export async function updateItem(itemId: string, payload: {}) {
+  try {
+    const item = await dspaceApi.items.update(itemId, payload)
+    console.log(`${item.name} (handle: ${item.handle}, id: ${item.uuid}) updated`)
+  } catch (e: any) {
+    console.error(`Error updating item with id: ${itemId}`)
+    process.env.DEBUG && console.dir(e)
+  }
+}
+
 export async function showItemBundles(itemId: string, type?: string) {
   try {
     const res = await dspaceApi.bundles.byItemId(itemId)

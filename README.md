@@ -45,6 +45,15 @@ import * as DSpace from 'dspace7-node'
   const targetCollection = 'dcbde2c8-b438-46e9-82ba-9e9e674aa3c5'
   await DSpace.moveItem(itemId, targetCollection)
 
+  // Update item with any payload (from v1.0.9)
+  await DSpace.updateItem(itemId, [
+    {
+      op: 'add',
+      path: '/metadata/dspace.entity.type',
+      value: [{ value: 'Publication' }]
+    }
+  ])
+
   // Get bundle details
   await DSpace.showItemBundles(itemId)
   await DSpace.showItemBundles(itemId, 'ORIGINAL')

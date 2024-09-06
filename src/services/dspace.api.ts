@@ -44,6 +44,7 @@ const responseBody = <T>(response: AxiosResponse<T>) => response.data
 const request = {
   get: <T>(url: string) => axios.get<T>(url).then(responseBody),
   post: <T>(url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
+  patch: <T>(url: string, body: {}) => axios.patch<T>(url, body).then(responseBody),
   postForm: <T>(url: string, body: {}) =>
     axios.post<T>(url, body, {
       headers: {
@@ -106,6 +107,7 @@ const collections = {
 const items = {
   all: (size = 20) => request.get<Items>(`/api/core/items?${size}`),
   byId: (itemId: string) => request.get<Item>(`/api/core/items/${itemId}`),
+  update: (itemId: string, payload: {}) => request.patch<Item>(`/api/core/items/${itemId}`, payload),
   move: (itemId: string, targetColId: string) => request
     .putUri<void>(`/api/core/items/${itemId}/owningCollection`,
       `${baseUrl}/api/core/collections/${targetColId}`)
