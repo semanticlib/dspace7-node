@@ -124,6 +124,15 @@ export async function deleteBitstreams(bitstreamId: string) {
   }
 }
 
+export async function deleteBitstreamsMulti(payload: any) {
+  try {
+    await dspaceApi.bitstreams.multiDelete(payload)
+  } catch (e: any) {
+    console.error(`Delete bitstream failed: ${e.errorCode}`)
+    process.env.DEBUG && console.dir(e)
+  }
+}
+
 export async function deleteBitstreamsByItemId(itemId: string) {
   try {
     const res = await dspaceApi.bundles.byItemId(itemId)

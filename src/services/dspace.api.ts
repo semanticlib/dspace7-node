@@ -122,7 +122,8 @@ const bitstreams = {
   byBundleId: (bundleId: string) => request.get<Bitstreams>(`/api/core/bundles/${bundleId}/bitstreams`),
   create: (bundleId: string, payload: {}) => request
     .postForm<Bitstream>(`/api/core/bundles/${bundleId}/bitstreams`, payload),
-  delete: (bitstreamId: string) => request.delete<void>(`/api/core/bitstreams/${bitstreamId}`)
+  delete: (bitstreamId: string) => request.delete<void>(`/api/core/bitstreams/${bitstreamId}`),
+  multiDelete: (payload: any) => request.patch('/api/core/bitstreams', payload),
 }
 
 const dspaceApi = {
