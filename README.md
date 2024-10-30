@@ -81,6 +81,7 @@ The motivation to write with example use cases are described here:
 - Add/delete communities/collections
 - Move items between collections
 - Add/delete bitstreams
+- [Delete multiple bitstreams](https://github.com/DSpace/RestContract/blob/main/bitstreams.md#multiple-bitstreams-delete) (`deleteBitstreamsMulti`)
 
 ## Tests
 
