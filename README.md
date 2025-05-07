@@ -1,4 +1,15 @@
 # DSpace Node
+
+**⚠️ This project is now archived. ⚠️**
+
+This project has been succeeded by [**dspace-rest**](https://github.com/semanticlib/dspace-rest).
+
+The new `dspace-rest` library:
+- Supports both DSpace 7 and DSpace 8.
+- Includes a command-line interface (CLI) tool for easier interaction.
+
+----
+
 ![main](https://github.com/semanticlib/dspace7-node/actions/workflows/node.js.yml/badge.svg)
 [![NPM version](https://img.shields.io/npm/v/dspace7-node.svg)](https://npmjs.org/package/dspace7-node)
 [![NPM downloads](https://img.shields.io/npm/dm/dspace7-node.svg)](https://npmjs.org/package/dspace7-node)
